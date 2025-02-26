@@ -1,0 +1,35 @@
+<form class="region-form">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item"><a class="nav-link active" href="#generalTab" role="tab" data-toggle="tab"><span>{{trans.general}}</span></a></li>
+        {{#if showExitTransition}}
+            <li class="nav-item"><a class="nav-link" href="#transitionTab" role="tab" data-toggle="tab"><span>{{trans.transition}}</span></a></li>
+        {{/if}}
+    </ul>
+    <div class="form-content">
+        <form id="regionFormEdit" class="XiboForm">
+            <div class="tab-content">
+                <div class="tab-pane active" id="generalTab">
+                    {{> inputs/hidden id="type" value=region.type customClass="region-input" }}
+                    {{> inputs/text value=region.name id="name" title=trans.region.name helpText=trans.region.nameHelpText customClass="region-input" }}
+
+                    {{#eq region.type 'playlist' }}
+                        {{> inputs/text value=region.syncKey id="syncKey" title=trans.region.syncKey helpText=trans.region.syncKeyHelpText customClass="region-input" }}
+                    {{/eq}}
+
+                    {{#eq region.type 'frame' }}
+                        {{> inputs/checkbox value=(getOption region.regionOptions "loop") id="loop" title=trans.region.loop helpText=trans.region.loopHelpText customClass="region-input" }}
+                        {{> inputs/message messageType="info" title=trans.region.loopMessage1}}
+                        {{> inputs/message messageType="info" title=trans.region.loopMessage2}}
+                        {{> inputs/message messageType="info" title=trans.region.loopMessage3}}
+                    {{/eq}}
+                </div>
+
+                {{#if showExitTransition}}
+                    <div class="tab-pane" id="transitionTab">
+                        {{> inputs/dropdown value=(getOption region.regionOptions "transitionType") options=(arrMerge (arr (obj code='' transition='Off')) transitions.out) optionsTitle="transition" optionsValue="code" id="transitionType" title=trans.region.exitTransitionTitle helpText=trans.region.exitTransitionHelpText }}
+                    </div>
+                {{/if}}
+            </div>
+        </form>
+    </div>
+</form>

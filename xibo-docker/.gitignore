@@ -1,0 +1,4 @@
+.vagrant/
+shared/
+docker-compose.override.yml
+.idea/
