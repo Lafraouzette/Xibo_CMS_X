@@ -19,7 +19,7 @@
  * along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* eslint-disable max-len */
+
 describe('Sync Groups', function() {
   let testRun = '';
 

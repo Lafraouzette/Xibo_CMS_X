@@ -19,7 +19,7 @@
  * along with Xibo.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* eslint-disable max-len */
+
 describe('Layout Editor Status Bar', function() {
   const layoutStatusSelector = '#layout-info-status';
   const layoutNameSelector = '.layout-info-name span';
